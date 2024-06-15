@@ -1,15 +1,18 @@
 import Button from "./Button"
+import {Route, Routes} from "react-router-dom";
 import ItemListContainer from "./ItemListContainer"
 
 function Main(){
   return (
     <main>
-    <ItemListContainer bienvenida="Bienvenido a Zera!"/>
-     <h2>Productos</h2>
-
-     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, repellat!</p>
-     <Button texto="Agregar al carrito "/>   
-     <Button texto="Detalle"/>   
+    <Routes>
+       <Route path="/" element={<ItemListContainer/>}/>
+       <Route path="/productos" element={<ItemListContainer/>}/>
+       <Route path="/categoria/:id" element={<ItemListContainer/>}/>
+       <Route path="/carrito" element={<p>No Hay Productos en el Carrito</p>}/>
+    </Routes>
+     
+     
     </main>
 
   )

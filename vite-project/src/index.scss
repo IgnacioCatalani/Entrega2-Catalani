@@ -68,3 +68,34 @@ p{
 .carrito1{
   width: 35px;
 }
+
+.griditems {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px ;
+  
+}
+
+.grid-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  width: 90%
+}
+
+.grid-item img {
+  max-width: 100%;
+}
+
+.grid-item h2 {
+  color: #221f1f;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+.grid-item p {
+  font-size: 25px;
+  font-weight: bold;
+  color: rgb(119, 23, 23);
+}
