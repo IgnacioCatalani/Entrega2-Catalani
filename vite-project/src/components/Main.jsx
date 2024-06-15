@@ -1,19 +1,17 @@
-import { Route, Routes } from "react-router-dom"
 import Button from "./Button"
 import ItemListContainer from "./ItemListContainer"
-import CartWidget from "./CartWidget"
 
 function Main(){
   return (
     <main>
-     <Routes>
-      <Route path="/" element={<p>Home</p>}/>
-      <Route path="/categoria/:id" element={<ItemListContainer />} />
-      <Route path="/productos" element={<ItemListContainer/>}/>
-      <Route path="/carrito" element={<CartWidget/>}/>
-     </Routes>
+    <ItemListContainer bienvenida="Bienvenido a Zera!"/>
+     <h2>Productos</h2>
+
+     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, repellat!</p>
+     <Button texto="Agregar al carrito "/>   
+     <Button texto="Detalle"/>   
     </main>
-    
+
   )
 }
 
