@@ -1,8 +1,16 @@
+import { useState } from "react"
+
 
 function Button(props) {
-    
-  return (
-    <button className="btn">{props.texto}</button>
+  const [miEstado, setmiEstado] = useState("valor inicial")
+
+  const hacerClick = ()=>{
+   setmiEstado("nuevo valor")
+  }
+  
+  
+    return (
+    <button className="btn" onClick={hacerClick}>{miEstado}</button>
   )
 }
 

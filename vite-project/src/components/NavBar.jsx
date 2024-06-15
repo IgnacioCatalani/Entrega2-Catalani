@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import CartWidget from "./CartWidget"
 
 function NavBar(props) {
@@ -6,9 +7,9 @@ function NavBar(props) {
   if (props.isHeader == true){
     return (
         <nav>
-         <a href="#">Inicio</a>
-         <a href="#">Productos</a>
-         <a href="#">Contacto</a>
+         <Link to="/">Inicio</Link>
+         <Link to="/productos">Productos</Link>
+         <Link to="/carrito">Carrito</Link>
          <CartWidget/>
         </nav>
       )
@@ -16,9 +17,9 @@ function NavBar(props) {
  else{
     return (
         <nav>
-         <a href="#">Terminos y Condiciones</a>
-         <a href="#">F.A.Q</a>
-         <a href="#">Contactanos</a>
+         <Link to="/tyc">Terminos y Condiciones</Link>
+         <Link to="/faq">F.A.Q</Link>
+         <Link to="/contacto">Contactanos</Link>
         </nav>
       )
  }
