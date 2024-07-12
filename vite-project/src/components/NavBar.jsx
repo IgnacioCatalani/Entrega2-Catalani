@@ -1,7 +1,11 @@
-import { Link, NavLink  } from "react-router-dom"
+import { NavLink  } from "react-router-dom"
 import CartWidget from "./CartWidget"
+import { useContext } from "react"
+import { miContexto } from "./CartContext"
 
 function NavBar(props) {
+
+  const valorDelContexto = useContext(miContexto)
 
 
   if (props.isHeader == true){
@@ -12,6 +16,7 @@ function NavBar(props) {
          <NavLink to="/categoria/jewelery">Joyeria</NavLink >
          <NavLink to="/categoria/electronics">Electrónica</NavLink >
          <NavLink to="/carrito">Carrito</NavLink >
+         <span className="cart-count">{valorDelContexto.cant}</span>
          <CartWidget/>
         </nav>
       )
