@@ -32,7 +32,7 @@ function Carrito() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isFormValid) {
-      alert('Formulario enviado');
+      alert('Compra completada con éxito!');
      
     }
   };
@@ -41,6 +41,7 @@ function Carrito() {
     <div>
       <form onSubmit={handleSubmit}>
         <div>
+        <p className="mb-8">Complete el formulario para enviar su pedido!</p>
           <label htmlFor="nombre" className='textoboton'>Nombre: </label>
           <input 
             type="text" 

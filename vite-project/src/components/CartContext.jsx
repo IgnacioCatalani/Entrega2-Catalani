@@ -22,4 +22,4 @@ function CartContext(props) {
   )
 }
 
-export default CartContext
+export default CartContext 
