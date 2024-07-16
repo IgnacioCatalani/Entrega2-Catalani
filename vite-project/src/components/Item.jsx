@@ -23,7 +23,7 @@ function Item({ producto }) {
                 <h2>{producto.title}</h2>
                 <img src={producto.image} alt={producto.title} />
                 <p>${producto.price}</p>
-                <button onClick={handleClick}>Agregar al Carrito</button>
+                
                 <Link to={`/item/${producto.id}`}>
                     <button>Ver detalle</button>
                 </Link>

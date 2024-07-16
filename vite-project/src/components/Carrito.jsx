@@ -1,48 +1,70 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { miContexto } from './CartContext';
 
 function Carrito() {
+  const { carrito, calculateTotal, vaciarCarrito } = useContext(miContexto);
   const [nombre, setNombre] = useState('');
   const [email, setEmail] = useState('');
   const [direccion, setDireccion] = useState('');
-  const [isFormValid, setIsFormValid] = useState(false);
+  const [errores, setErrores] = useState({});
 
   const handleNombreChange = (e) => {
     setNombre(e.target.value);
-    validateForm();
   };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    validateForm();
   };
 
   const handleDireccionChange = (e) => {
     setDireccion(e.target.value);
-    validateForm();
   };
 
-  const validateForm = () => {
-    if (nombre && email && direccion) {
-      setIsFormValid(true);
-    } else {
-      setIsFormValid(false);
+  const validarFormulario = () => {
+    const nuevosErrores = {};
+    if (!nombre) {
+      nuevosErrores.nombre = 'El nombre es requerido';
     }
+    if (!email) {
+      nuevosErrores.email = 'El email es requerido';
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      nuevosErrores.email = 'El email no es válido';
+    }
+    if (!direccion) {
+      nuevosErrores.direccion = 'La dirección es requerida';
+    }
+    setErrores(nuevosErrores);
+    return Object.keys(nuevosErrores).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isFormValid) {
+    if (validarFormulario()) {
       alert('Compra completada con éxito!');
-     
+      vaciarCarrito(); 
     }
   };
 
   return (
     <div>
+      <h2>Carrito de Compras</h2>
+      {carrito.length === 0 ? (
+        <p>No hay productos en el carrito.</p>
+      ) : (
+        <div>
+          <ul>
+            {carrito.map((item, index) => (
+              <li key={index}>
+                <p className='items-carrito'>{item.title} - Cantidad: {item.quantity} - Subtotal: ${item.price * item.quantity}</p>
+              </li>
+            ))}
+          </ul>
+          <p className='total-carrito'>Total: ${calculateTotal()}</p>
+        </div>
+      )}
       <form onSubmit={handleSubmit}>
         <div>
-        <p className="mb-8">Complete el formulario para enviar su pedido!</p>
-          <label htmlFor="nombre" className='textoboton'>Nombre: </label>
+          <label htmlFor="nombre">Nombre: </label>
           <input 
             type="text" 
             id="nombre" 
@@ -50,9 +72,10 @@ function Carrito() {
             onChange={handleNombreChange} 
             required 
           />
+          {errores.nombre && <p className="error">{errores.nombre}</p>}
         </div>
         <div>
-          <label htmlFor="email" className='textoboton'>Email: </label>
+          <label htmlFor="email">Email: </label>
           <input 
             type="email" 
             id="email" 
@@ -60,9 +83,10 @@ function Carrito() {
             onChange={handleEmailChange} 
             required 
           />
+          {errores.email && <p className="error">{errores.email}</p>}
         </div>
         <div>
-          <label htmlFor="direccion" className='textoboton'>Dirección: </label>
+          <label htmlFor="direccion">Dirección: </label>
           <input 
             type="text" 
             id="direccion" 
@@ -70,8 +94,9 @@ function Carrito() {
             onChange={handleDireccionChange} 
             required 
           />
+          {errores.direccion && <p className="error">{errores.direccion}</p>}
         </div>
-        <button type="submit" className="btn-cc" disabled={!isFormValid}>Completar Compra</button>
+        <button type="submit" className="btn-cc">Completar Compra</button>
       </form>
     </div>
   );

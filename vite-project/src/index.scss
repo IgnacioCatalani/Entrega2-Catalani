@@ -64,9 +64,23 @@ p{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: red;
 }
+.precio-detalle{
+  color: #4CAF50;
+  font-size: 25px;
+ 
 
+}
+
+.items-carrito{
+  color: red;
+}
 .carrito1{
   width: 35px;
+}
+
+.total-carrito{
+  color: #4CAF50;
+  font-size: 45px;
 }
 
 .griditems {
@@ -108,6 +122,9 @@ p{
   left: -5px;  
 }
 
+form label {
+  color: #fff;
+} 
 
 form {
   display: flex;
