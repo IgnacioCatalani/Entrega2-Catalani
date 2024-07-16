@@ -24,7 +24,7 @@ En el carrito se observan los productos que hemos agregados, el precio total, y 
 
 
 ## DEMO
-[Deploy](zeracoder.netlify.app)
+[Deploy](https://zeracoder.netlify.app/)
 
 
 
