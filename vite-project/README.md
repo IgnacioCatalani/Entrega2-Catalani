@@ -4,11 +4,11 @@ Se puede ver un detalle mayor de los productos y agregarlos al carrito para comp
 En el carrito se observan los productos que hemos agregados, el precio total, y un formulario de compra final.
 
 ## Tecnologías Utilizadas
-   *firebase: ^10.12.3
-   *react: ^18.2.0
-   *react-dom: ^18.2.0
-   *react-router-dom: ^6.23.1
-   *sass: ^1.77.2
+*firebase: ^10.12.3
+*react: ^18.2.0
+*react-dom: ^18.2.0
+*react-router-dom: ^6.23.1
+*sass: ^1.77.2
 
 ## Instalación
 1. Clona el repositorio:
