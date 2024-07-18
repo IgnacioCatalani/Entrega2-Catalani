@@ -1,5 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { miContexto } from './CartContext';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../firebaseconfig';
 
 function Carrito() {
   const { carrito, calculateTotal, vaciarCarrito } = useContext(miContexto);
@@ -37,11 +39,25 @@ function Carrito() {
     return Object.keys(nuevosErrores).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validarFormulario()) {
-      alert('Compra completada con éxito!');
-      vaciarCarrito(); 
+      const nuevoPedido = {
+        nombre,
+        email,
+        direccion,
+        productos: carrito,
+        total: calculateTotal(),
+        fecha: new Date()
+      };
+
+      try {
+        await addDoc(collection(db, "pedidos"), nuevoPedido);
+        alert('Compra completada con éxito!');
+        vaciarCarrito();
+      } catch (error) {
+        console.error("Error al registrar el pedido: ", error);
+      }
     }
   };
 
